@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/nkadebug/tmp/issues"
   },
-  "homepage": "https://github.com/nkadebug/tmp#readme"
+  "homepage": "https://github.com/nkadebug/tmp#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "fs": "0.0.1-security",
+    "qs": "^6.9.4",
+    "uuid": "^8.3.2"
+  }
 }
