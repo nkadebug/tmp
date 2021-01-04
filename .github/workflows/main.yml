@@ -6,8 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-        git config user.name $GITHUB_ACTOR
-        git pull
-        npm ci
-        npm start
-        npm run push-to-gh
+          git config user.name $GITHUB_ACTOR
+          git pull
+          npm ci
+          npm start
+          npm run push-to-gh
