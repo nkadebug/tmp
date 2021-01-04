@@ -1,0 +1,13 @@
+name: Workflow
+on: push
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+        git config user.name $GITHUB_ACTOR
+        git pull
+        npm ci
+        npm start
+        npm run push-to-gh
