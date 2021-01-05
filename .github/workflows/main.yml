@@ -10,4 +10,5 @@ jobs:
           git pull
           npm ci
           npm start
+          git checkout -b gh-pages
           npm run push-gh-pages
