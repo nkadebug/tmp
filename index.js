@@ -13,7 +13,7 @@ let url =
 let q = {
   apiKey: '0c11f41678804d04b3054baadecf473d',
   after: '2017-01-01T00:00:00.000Z',
-  limit: 1000,
+  limit: 10000,
 };
 
 axios.post(url, qs.stringify(q)).then(({ data }) => {
