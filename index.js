@@ -13,7 +13,7 @@ let url =
 let q = {
   apiKey: '0c11f41678804d04b3054baadecf473d',
   after: '2017-01-01T00:00:00.000Z',
-  limit: 10000,
+  limit: 100000,
 };
 
 axios.post(url, qs.stringify(q)).then(({ data }) => {
@@ -26,7 +26,8 @@ axios.post(url, qs.stringify(q)).then(({ data }) => {
       if (i) {
         let qJson = {};
         qArr.forEach((a, j) => (qJson[keys[j]] = a));
-        qJson.id = uuid(qJson.id, ns);
+        //qJson.id = uuid(qJson.id, ns);
+        delete qJson.source;
         fs.writeFileSync(
           'docs/' + qJson.id + '.json',
           JSON.stringify(qJson, null, 2)
