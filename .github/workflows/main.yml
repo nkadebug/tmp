@@ -11,4 +11,8 @@ jobs:
           npm ci
           npm start
           git checkout -b gh-pages
+          rm -rf .git
+          git checkout master -- .gitignore
+          mkdir -p questions
+          mv docs questions
           npm run push-gh-pages
