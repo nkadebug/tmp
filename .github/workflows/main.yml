@@ -15,7 +15,7 @@ jobs:
           # git rm -rf .
           # git checkout master -- .gitignore
           mkdir -p questions
-          mv docs/* questions/*
+          mv docs/* questions/
           git add . 
           git commit -m "auto update"
           git push origin gh-pages
