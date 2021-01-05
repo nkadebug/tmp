@@ -10,9 +10,10 @@ jobs:
           git pull
           npm ci
           npm start
-          git checkout -b gh-pages
-          git rm -rf .
-          git checkout master -- .gitignore
+          git checkout gh-pages
+          # git checkout -b gh-pages
+          # git rm -rf .
+          # git checkout master -- .gitignore
           mkdir -p questions
           mv docs questions
           git add . 
