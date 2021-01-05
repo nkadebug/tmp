@@ -15,4 +15,6 @@ jobs:
           git checkout master -- .gitignore
           mkdir -p questions
           mv docs questions
-          npm run push-gh-pages
+          git add . 
+          git commit -m "auto update"
+          git push origin gh-pages
