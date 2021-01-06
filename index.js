@@ -2,21 +2,22 @@ console.time();
 const fs = require('fs');
 const qs = require('qs');
 const axios = require('axios').default;
-const uuid = require('uuid').v5;
-const ns = '0e155592-4a00-4649-9d9d-7430cffa5b26';
 
+let url = process.env.API_URL;
+
+let status = require('./status.json');
+
+console.log(status);
+
+if(status.init){
+  delete status.init;
+  fs.rmdirSync("docs",{recursive:true});
+}
 fs.mkdirSync('docs', { recursive: true });
 
-let url =
-  'https://script.google.com/macros/s/AKfycby8whGlU37C1SbU8kYzMETXwJ8xTf3eMBZG2ZP4iKm30D4ZORkEeSt25A/exec';
+status.apiKey = process.env.API_KEY;
 
-let q = {
-  apiKey: '0c11f41678804d04b3054baadecf473d',
-  after: '2017-01-01T00:00:00.000Z',
-  limit: 100000,
-};
-
-axios.post(url, qs.stringify(q)).then(({ data }) => {
+axios.post(url, qs.stringify(status)).then(({ data }) => {
   console.log(data.data.length);
   if (data.err) {
     console.error(data.msg);
@@ -26,14 +27,16 @@ axios.post(url, qs.stringify(q)).then(({ data }) => {
       if (i) {
         let qJson = {};
         qArr.forEach((a, j) => (qJson[keys[j]] = a));
-        //qJson.id = uuid(qJson.id, ns);
         delete qJson.source;
         fs.writeFileSync(
           'docs/' + qJson.id + '.json',
           JSON.stringify(qJson, null, 2)
         );
+        status.startDate = qJson.updated_at;
+        status.startId = qJson.id;
       }
     });
+    fs.writeFileSync('status.json',JSON.stringify(status,null,4));
   }
   console.timeEnd();
 });
