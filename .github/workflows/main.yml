@@ -13,12 +13,13 @@ jobs:
           git pull
           npm ci
           npm start
-          git checkout gh-pages
-          # git checkout -b gh-pages
-          # git rm -rf .
-          # git checkout master -- .gitignore
+          # git checkout gh-pages
+          git checkout -b gh-pages
+          git rm -rf .
+          git checkout master -- .gitignore
+          git checkout master -- status.json
           mkdir -p questions
-          mv docs/* questions/
+          mv docs/* .
           git add . 
           git commit -m "auto update"
           git push origin gh-pages
