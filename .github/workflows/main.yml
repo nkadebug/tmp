@@ -3,6 +3,9 @@ on: push
 jobs:
   job_1:
     runs-on: ubuntu-latest
+    env: 
+      API_URL: ${{ secrets.API_URL }}
+      API_KEY: ${{ secrets.API_KEY }}
     steps:
       - uses: actions/checkout@v2
       - run: |
